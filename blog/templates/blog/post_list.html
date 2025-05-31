@@ -1,23 +1,65 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Posts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+    <div class="max-w-4xl mx-auto p-6">
+        <h1 class="text-4xl font-bold mb-8 text-center text-blue-700">📚 Blog Posts</h1>
+
+        {% if posts %}
+            <div class="space-y-6">
+                {% for post in posts %}
+                    <div class="bg-white shadow-md rounded-2xl p-6 hover:shadow-lg transition-shadow">
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-2">{{ post.title }}</h2>
+                        <p class="text-gray-700 mb-4">{{ post.text }}</p>
+                        <div class="text-sm text-gray-500">Written by: <span class="font-medium text-gray-800">{{ post.author }}</span></div>
+                        <div class="text-sm text-gray-500">published at: <span class="font-medium text-gray-800">{{ post.published_date }}</span></div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-center text-gray-500">No posts available.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html> -->
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Django Girls blog</title>
-    </head>
-    <body>
-        <header>
-            <h1><a href="/">Django Girls Blog</a></h1>
-        </header>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Published Posts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-200 text-gray-800 font-sans">
 
-        <article>
-            <time>published: 14.06.2014, 12:14</time>
-            <h2><a href="">My first post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        </article>
+  <div class="max-w-4xl mx-auto py-10 px-6">
+    <h1 class="text-5xl font-bold text-center text-gray-700 mb-12 drop-shadow-sm">📚 Published Blog Posts</h1>
 
-        <article>
-            <time>published: 14.06.2014, 12:14</time>
-            <h2><a href="">My second post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-        </article>
-    </body>
+    {% if posts %}
+      <div class="space-y-8">
+        {% for post in posts %}
+          <div class="bg-white rounded-2xl shadow p-6 hover:shadow-md transition-all duration-300 border-l-4 border-gray-400">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-2">{{ post.title }}</h2>
+            <p class="text-gray-700 mb-4 leading-relaxed">{{ post.text|truncatewords:40 }}</p>
+            <div class="flex justify-between items-center text-sm text-gray-500">
+              <span>By <span class="text-gray-800 font-medium">{{ post.author }}</span></span>
+              <span>{{ post.published_date|date:"F j, Y, g:i a" }}</span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="text-center text-gray-500 text-lg mt-10">
+        <p>No posts have been published yet.</p>
+      </div>
+    {% endif %}
+  </div>
+
+</body>
 </html>
