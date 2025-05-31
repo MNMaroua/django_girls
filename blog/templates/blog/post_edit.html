@@ -1,0 +1,31 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+  <div class="max-w-3xl mx-auto mt-12 px-6">
+    <h2 class="text-3xl font-bold text-gray-800 mb-8">📝 New Post</h2>
+
+    <form method="POST" class="space-y-6 bg-white p-8 rounded-2xl shadow-md border border-gray-200">
+      {% csrf_token %}
+      
+      {% for field in form %}
+        <div>
+          <label for="{{ field.id_for_label }}" class="block text-gray-700 font-medium mb-2">
+            {{ field.label }}
+          </label>
+          {{ field }}
+          {% if field.help_text %}
+            <p class="text-sm text-gray-500 mt-1">{{ field.help_text }}</p>
+          {% endif %}
+          {% for error in field.errors %}
+            <p class="text-sm text-red-600 mt-1">{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endfor %}
+
+      <button type="submit"
+              class="bg-blue-600 text-white font-semibold px-6 py-2 rounded-md hover:bg-blue-700 transition">
+        💾 Save
+      </button>
+    </form>
+  </div>
+{% endblock %}
