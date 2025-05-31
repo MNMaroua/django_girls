@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Published Posts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+</head>
+<body class="bg-gray-200 text-gray-800 font-sans">
+ <div class="max-w-4xl mx-auto py-10 px-6">
+    <h1 class="text-5xl font-bold text-center text-gray-700 mb-12 drop-shadow-sm">📚 Published Blog Posts</h1>
+  {% block content %}
+  {% endblock %}
+</div>
+
+</body>
+</html>
