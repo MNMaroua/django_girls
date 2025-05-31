@@ -18,7 +18,8 @@
         {{ post.text|linebreaksbr }}
       </div>
       <!-- Action buttons -->
-      <div class="flex gap-4">
+      <div class="flex gap-4" style="padding-top: 30px;"
+>
         <a href="{% url 'post_edit' pk=post.pk %}"
            class="bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700 transition">
           ✏️ Modify
