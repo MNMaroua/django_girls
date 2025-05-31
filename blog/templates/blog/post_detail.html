@@ -25,7 +25,7 @@
         </a>
   
 
-        <form method="POST" action="">
+        <form method="POST" action="{% url 'post_delete' pk=post.pk %}">
           {% csrf_token %}
           <button type="submit"
                   class="bg-red-600 text-white px-5 py-2 rounded-md hover:bg-red-700 transition"

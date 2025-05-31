@@ -47,3 +47,23 @@ def post_edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
     
+
+def post_delete(request, pk):
+
+    post = get_object_or_404(Post, pk=pk)
+    print("i am here")
+
+    if request.method == "POST":
+        post.delete()
+        return redirect('post_list')  # Or wherever you want to go after deletion
+    # if request.method == "DELETE":
+    #     form = PostForm(request.POST, instance=post)
+    #     if form.is_valid():
+    #         post = form.save(commit=False)
+    #         post.author = request.user
+    #         post.published_date = timezone.now()
+    #         post.save()
+    #         return redirect('post_detail', pk=post.pk)
+    # else:
+    #     form = PostForm(instance=post)
+    # return render(request, 'blog/post_edit.html', {'form': form})
